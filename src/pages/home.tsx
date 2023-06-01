@@ -1,18 +1,43 @@
-import { useState } from "react";
-import { GetAll } from "../Api";
+import { useEffect, useState } from "react";
+import { GetAllByFilter } from "../Api";
 import { ProductItem } from "../components/product-item";
+import { ProductModel } from "../models/product";
+import { Link, useSearchParams } from "react-router-dom";
+import { BaseResultModel } from "../models/baseResult";
+import { Pagination } from "../components/pagination";
+import { ReactComponent as ArrowIcon } from '../assets/arrow.svg';
 
 interface Props {
     setLoading(value: boolean): void
 }
 
 export function Home(props: Props) {
-    const [products, setProducts] = useState([]);
+    const PRODUCT_LIMIT_FOR_PAGE = 8;
+    
+    const [products, setProducts] = useState<ProductModel[]>([]);
+    const [totalCount, setTotalCount] = useState(1);
+    const [searchParams] = useSearchParams();
+    const nameParam = searchParams.get("name");
+    const categoryParam = searchParams.get("category");
+    const pageParam = searchParams.get("page");
+    const orderParam = searchParams.get("order");
 
-    useState(async () => {
-        const response = await GetAll();
-        setProducts(response);
-    });
+    useEffect(() => {
+        console.log("mudou");
+        filter().catch(console.error);
+
+    }, [nameParam, categoryParam, pageParam]);
+
+    async function filter() {
+        const response: BaseResultModel = await GetAllByFilter(categoryParam, nameParam, Number(pageParam ?? "1"), PRODUCT_LIMIT_FOR_PAGE);
+        if(!response.success) {
+            setProducts([]);
+            return;
+        }
+
+        setProducts(response.data.products as ProductModel[]);
+        setTotalCount(response.data.totalCount);
+    }
 
     return <div className="container">
         <div className="content">
@@ -20,87 +45,36 @@ export function Home(props: Props) {
                 <div className="filters">
                     <ul className="categories">
                         <li>
-                            <a className="category-item active" href="#">
+                            <Link className={`category-item ${!categoryParam ? "active" : ""}`} to="/">
                                 TODOS OS PRODUTOS
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className="category-item" href="#">
+                            <Link className={`category-item ${categoryParam === "t-shirts" ? "active" : ""}`} to="/?category=t-shirts">
                                 CAMISETAS
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className="category-item" href="#">
+                            <Link className={`category-item ${categoryParam === "mugs" ? "active" : ""}`} to="/?category=mugs">
                                 CANECAS
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                     <div className="orderby">
                         <button type="button">
                             Organizar por
-                            <i className="material-symbols-outlined">expand_more</i>
+                            {/* <i className="material-symbols-outlined">expand_more</i> */}
+                            <ArrowIcon />
                         </button>
                     </div>
                 </div>
-                <ul className="pagination">
-                    <li>
-                        <a className="pagination-item active" href="#">1</a>
-                    </li>
-                    <li>
-                        <a className="pagination-item" href="#">2</a>
-                    </li>
-                    <li>
-                        <a className="pagination-item" href="#">3</a>
-                    </li>
-                    <li>
-                        <a className="pagination-item" href="#">4</a>
-                    </li>
-                    <li>
-                        <a className="pagination-item" href="#">5</a>
-                    </li>
-                    <li>
-                        <a className="pagination-item previous" href="#">
-                            <i className="material-symbols-outlined">arrow_back_ios</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="pagination-item next" href="#">
-                            <i className="material-symbols-outlined">arrow_forward_ios</i>
-                        </a>
-                    </li>
-                </ul>
+                <Pagination pageParam={pageParam} totalCount={totalCount} />
                 <div className="product-list">
-                    {products && products.length > 0 && products.map((item: any) => (
-                        <ProductItem product={item}></ProductItem>
+                    {products && products.length > 0 && products.map((item: ProductModel) => (
+                        <ProductItem product={item} key={item.id}></ProductItem>
                     ))}
                 </div>
-                <ul className="pagination">
-                    <li>
-                        <a className="pagination-item active" href="#">1</a>
-                    </li>
-                    <li>
-                        <a className="pagination-item" href="#">2</a>
-                    </li>
-                    <li>
-                        <a className="pagination-item" href="#">3</a>
-                    </li>
-                    <li>
-                        <a className="pagination-item" href="#">4</a>
-                    </li>
-                    <li>
-                        <a className="pagination-item" href="#">5</a>
-                    </li>
-                    <li>
-                        <a className="pagination-item previous" href="#">
-                            <i className="material-symbols-outlined">arrow_back_ios</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="pagination-item next" href="#">
-                            <i className="material-symbols-outlined">arrow_forward_ios</i>
-                        </a>
-                    </li>
-                </ul>
+                <Pagination pageParam={pageParam} totalCount={totalCount} />
             </div>
         </div>
     </div>
