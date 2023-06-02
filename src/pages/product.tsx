@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { GetById } from "../Api";
 import { useNavigate, useParams } from "react-router-dom";
 import { ProductModel } from "../models/product";
@@ -6,6 +6,7 @@ import { convertPrice } from "../utils/convertPrice";
 import { ReactComponent as ShoppingBagIcon } from '../assets/shopping-bag.svg';
 import { BackButton } from "../components/back-button";
 import { convertCategory } from "../utils/convertCategory";
+import { AppContext } from "../context/appContext";
 
 interface Props {
     productId: number;
@@ -13,17 +14,18 @@ interface Props {
 }
 
 export function Product(props: Props) {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
+    const context: any = useContext(AppContext);
     const { id } = useParams();
     const [product, setProduct] = useState<ProductModel | null>(null);
 
     useState(async () => {
-        console.log(id);
         const response = await GetById(Number(id));
         setProduct(response.data);
     });
 
-    function handleToCart() {
+    function handleAddProduct() {
+        context.addProduct(product);
         navigate("/cart");
     }
 
@@ -48,7 +50,7 @@ export function Product(props: Props) {
                                 </div>
                             </div>
                             <div className="details-bottom-info">
-                                <button type="button" onClick={()=> handleToCart()}>
+                                <button type="button" onClick={()=> handleAddProduct()}>
                                     <ShoppingBagIcon />
                                     ADICIONAR NO CARRINHO
                                 </button>

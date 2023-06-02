@@ -5,4 +5,5 @@ export interface ProductModel {
     image_url: string;
     category: string;
     price: number;   
+    count: number;
 }

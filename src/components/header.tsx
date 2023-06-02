@@ -1,18 +1,20 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as SearchIcon } from '../assets/search.svg';
 import { ReactComponent as ShoppingBagIcon } from '../assets/shopping-bag.svg';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/appContext';
 
 interface Props {
     history: any;
-    setLoading(value: boolean): void
 }
 
 export function Header(props: Props) {
-    const inputReference: any = useRef(null);
-    let navigate = useNavigate();
     const [searchvalue, setSearchValue] = useState("");
+
+    const navigate = useNavigate();
+    const context: any = useContext(AppContext);
+    const inputReference: any = useRef(null);
 
     function handleSearch() {
         if (searchvalue.length < 1) {
@@ -45,7 +47,7 @@ export function Header(props: Props) {
                 <div className="btn-cart">
                     <Link to="/cart">
                         <ShoppingBagIcon />
-                        <span className="cart-badge">2</span>
+                        <span className="cart-badge">{context.getTotalInfoCart()[0]}</span>
                     </Link>
                 </div>
             </div>

@@ -6,7 +6,7 @@
             "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
             "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-06.jpg",
             "category": "mugs",
-            "price": 12.90
+            "price": 35.90
         },
         {
             "id": 2,
@@ -22,7 +22,7 @@
             "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
             "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-04.jpg",
             "category": "mugs",
-            "price": 12.90
+            "price": 22.90
         },
         {
             "id": 4,
@@ -30,7 +30,7 @@
             "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
             "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-03.jpg",
             "category": "t-shirts",
-            "price": 12.90
+            "price": 48.90
         },
         {
             "id": 5,
@@ -38,7 +38,7 @@
             "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
             "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-06.jpg",
             "category": "t-shirts",
-            "price": 12.90
+            "price": 27.90
         },
         {
             "id": 6,
@@ -46,7 +46,7 @@
             "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
             "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-05.jpg",
             "category": "mugs",
-            "price": 12.90
+            "price": 37.90
         },
         {
             "id": 7,
@@ -54,7 +54,7 @@
             "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
             "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-02.jpg",
             "category": "t-shirts",
-            "price": 12.90
+            "price": 15.90
         },
         {
             "id": 8,
@@ -62,7 +62,7 @@
             "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
             "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-01.jpg",
             "category": "mugs",
-            "price": 12.90
+            "price": 13.90
         },
         {
             "id": 9,
@@ -70,7 +70,7 @@
             "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
             "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-03.jpg",
             "category": "mugs",
-            "price": 12.90
+            "price": 11.90
         },
         {
             "id": 10,
@@ -78,7 +78,7 @@
             "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
             "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-01.jpg",
             "category": "t-shirts",
-            "price": 12.90
+            "price": 99.90
         },
         {
             "id": 11,
@@ -94,7 +94,7 @@
             "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
             "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-04.jpg",
             "category": "t-shirts",
-            "price": 12.90
+            "price": 45.90
         }
     ]
 }
