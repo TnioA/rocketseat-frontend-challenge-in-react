@@ -767,6 +767,16 @@ header .content {
         width: 100%;
     }
 
+    .cart-resume,
+    .cart-resume-info,
+    .resume-bottom-info {
+        height: auto;
+    }
+
+    .cart-resume {
+        padding-bottom: 15px;
+    }
+
     .cart-product {
         display: block;
     }
