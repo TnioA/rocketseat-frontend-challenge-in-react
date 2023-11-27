@@ -127,7 +127,6 @@ svg.right {
     right: 0;
     padding: 12px 16px;
     width: 190px;
-    z-index: 100;
 }
 
 .dropdown ul li a {
@@ -158,6 +157,7 @@ header {
     height: 80px;
     background: #FFFFFF;
     justify-content: center;
+    z-index: 100;
 }
 
 header .content {
@@ -762,7 +762,7 @@ header .content {
 
     .cart-products,
     .cart-resume,
-    .cart-product-image,
+    /* .cart-product-image, */
     .cart-product-info {
         width: 100%;
     }
@@ -777,12 +777,24 @@ header .content {
         padding-bottom: 15px;
     }
 
-    .cart-product {
-        display: block;
+    .cart-product-image {
+        position: absolute;
+        width: 82px;
+        padding: 20px;
     }
 
+    .cart-product-header {
+        padding-left: 55px;
+        margin-bottom: 10px;
+
+    }
+
+    /* .cart-product {
+        display: block;
+    } */
+
     .cart-product-image img {
-        border-radius: 8px 8px 0 0;
+        border-radius: 8px;
     }
 }
 
